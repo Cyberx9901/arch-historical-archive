@@ -3,7 +3,7 @@
 import sys
 import os
 import re
-import tarfile
+import xtarfile as tarfile
 import traceback
 
 import internetarchive as ia
@@ -39,7 +39,7 @@ class ArchiveUploader:
 
     def extract_pkginfo(self, package):
         """Given a package (.tar.xz filename), extract and parse its .PKGINFO file as a dict"""
-        with tarfile.open(package, mode='r|*', encoding='utf-8') as tar:
+        with tarfile.open(package, mode='r') as tar:
             # Manual seeking to find .PKGINFO without having to uncompress the whole package
             while True:
                 f = tar.next()
